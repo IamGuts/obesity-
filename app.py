@@ -70,7 +70,10 @@ def main():
             st.error(f"Произошла ошибка: {e}")
 
     # Отображение изображения
-    st.image(IMAGE_PATH, caption='Описание изображения', use_container_width=True)
+    try:
+        st.image(IMAGE_PATH, caption='Описание изображения', use_container_width=True)
+    except Exception as e:
+        st.error(f"Ошибка при загрузке изображения: {e}")
 
 if __name__ == "__main__":
     main()
