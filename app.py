@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd 
 
-from Obesity_py import ObesityClassifier
+from obesity_predict import ObesityClassifier
 from config import MODEL_PATH, IMAGE_PATH
 
 
@@ -73,7 +73,7 @@ with st.sidebar:
         input_df = pd.DataFrame(input_data)
 
         # Выполнение предсказания
-        result = classifier.model.predict(input_df)
+        result = classifier.predict(input_df)
         result_list = [
         'Нормальный вес',
         'Избыточный вес I уровня', 
