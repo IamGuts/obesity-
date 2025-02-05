@@ -69,6 +69,7 @@ def main():
         except Exception as e:
             st.error(f"Произошла ошибка: {e}")
 
+    # Отображение изображения
     st.image(IMAGE_PATH, caption='Описание изображения', use_container_width=True)
 
 if __name__ == "__main__":
