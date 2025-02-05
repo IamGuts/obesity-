@@ -1,2 +1,5 @@
-MODEL_PATH = "obesity-/model/model.pkl"  # Используйте прямые слэши
-IMAGE_PATH = "obesity-/image/imt-calculator.jpg"  # Используйте прямые слэши
+# config.py
+import os
+
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model", "model.pkl")
+IMAGE_PATH = os.path.join(os.path.dirname(__file__), "image", "imt-calculator.jpg")
