@@ -63,7 +63,7 @@ def main():
             ]
 
             if result is not None:
-                st.success(f'Результат предсказания: {result}')
+                st.success(f'Результат предсказания: {result[0]}')
             else:
                 st.error('Не удалось выполнить предсказание.')
         except Exception as e:
