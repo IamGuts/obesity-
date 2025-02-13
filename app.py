@@ -52,18 +52,19 @@ def main():
 
             input_df = pd.DataFrame(input_data)
             result = classifier.predict(input_df)
-            result_list = [
-                'Нормальный вес',
-                'Избыточный вес I уровня',
-                'Избыточный вес II уровня',
-                'Ожирение I типа',
-                'Недостаточный вес',
-                'Ожирение II типа',
-                'Ожирение III типа'
-            ]
+            encod_params =  {
+                'Normal_Weight' : 0,
+                'Overweight_Level_I' : 1,
+                'Overweight_Level_II' : 2,
+                'Obesity_Type_I' : 3,
+                'Insufficient_Weight' : 4,
+                'Obesity_Type_II' : 5,
+                'Obesity_Type_III' : 6
+            }
+            encod_params_inv = {v: k for k, v in encod_params.items()}
 
             if result is not None:
-                st.success(f'Результат предсказания: {result[0]}')
+                st.success(f'Результат предсказания: {encod_params_inv[result[0]]}')
             else:
                 st.error('Не удалось выполнить предсказание.')
         except Exception as e:
