@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 from obesity_predict import ObesityClassifier
 from config import MODEL_PATH, IMAGE_PATH
+import os 
+
 
 def main():
     st.title('Классификация ожирения')
@@ -64,7 +66,14 @@ def main():
             encod_params_inv = {v: k for k, v in encod_params.items()}
 
             if result is not None:
-                st.success(f'Результат предсказания: {encod_params_inv[result[0]]}')
+                result_text = os.path.join(os.path.dirname(__file__), "text", "describe.py")
+
+                st.success(f'Результат предсказания: {result_text[
+                    encod_params_inv[
+                        result[0]
+                        ]
+                    ]
+                    }')
             else:
                 st.error('Не удалось выполнить предсказание.')
         except Exception as e:
