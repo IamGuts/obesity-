@@ -2,7 +2,19 @@ import streamlit as st
 import pandas as pd
 from obesity_predict import ObesityClassifier
 from config import MODEL_PATH, IMAGE_PATH
+import json
 import os 
+from pathlib import Path 
+
+
+# Загрузка описаний
+DESC_PATH = Path(__file__).resolve().parent / "text" / "descriptions.json"
+
+try:
+    with open(DESC_PATH, "r", encoding="utf-8") as f:
+        class_descriptions = json.load(f)
+except Exception as e:
+    st.error(f"Ошибка загрузки описаний: {str(e)}")
 
 
 def main():
@@ -66,9 +78,11 @@ def main():
             encod_params_inv = {v: k for k, v in encod_params.items()}
 
             if result is not None:
-                result_text = os.path.join(os.path.dirname(__file__), "text", "describe.py")
+                class_name = encod_params_inv[result[0]]
+                description = class_descriptions.get(class_name, "Описание не найдено")
+                st.success(f"**Результат:** {description}")
 
-                st.success(f'Результат предсказания: {result_text[
+                st.success(f'Результат предсказания: {result_text.[
                     encod_params_inv[
                         result[0]
                         ]
