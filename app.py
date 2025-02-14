@@ -80,7 +80,11 @@ def main():
             if result is not None:
                 result_text = os.path.join(os.path.dirname(__file__), "text", "describe.py")
 
-                st.success(encod_params_inv[result[0]])
+                st.success(describe_result[
+                    encod_params_inv[
+                    result[0]
+                    ]
+                    ])
             else:
                 st.error('Не удалось выполнить предсказание.')
         except Exception as e:
